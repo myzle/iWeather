@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityListViewController">
+            <connections>
+                <outlet property="tableView" destination="1t3-xb-frd" id="uWG-I3-neL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1t3-xb-frd">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="YXY-DD-rz3"/>
+                        <outlet property="delegate" destination="-1" id="VRD-yr-nMo"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="1t3-xb-frd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="95" id="2Ib-ZJ-yAQ"/>
+                <constraint firstAttribute="trailing" secondItem="1t3-xb-frd" secondAttribute="trailing" id="2wI-FI-wk9"/>
+                <constraint firstAttribute="trailing" secondItem="1t3-xb-frd" secondAttribute="trailing" id="CEh-Kn-pdK"/>
+                <constraint firstItem="1t3-xb-frd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EaF-tt-pNR"/>
+                <constraint firstAttribute="bottom" secondItem="1t3-xb-frd" secondAttribute="bottom" id="IKB-ba-TB3"/>
+                <constraint firstItem="1t3-xb-frd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pre-ok-SGb"/>
+                <constraint firstAttribute="bottom" secondItem="1t3-xb-frd" secondAttribute="bottom" id="Vho-AB-Uh5"/>
+                <constraint firstItem="1t3-xb-frd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ybp-To-dp7"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="2Ib-ZJ-yAQ"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>
