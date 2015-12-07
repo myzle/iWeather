@@ -62,12 +62,13 @@
                                                     _weatherData = jsonObject[@"data"];
                                                     
                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                                        self.temp.text = _weatherData[@"temp"];
+                                                        self.temp.text = [NSString stringWithFormat:@"%@℃", _weatherData[@"temp"]];
                                                         self.windPower.text = _weatherData[@"wind_power"];
                                                         self.city.text = _weatherData[@"city"];
-                                                        self.highTemp.text = _weatherData[@"high_temp"];
+                                                        self.highTemp.text = [NSString stringWithFormat:@"%@℃", _weatherData[@"high_temp"]];
                                                         self.weather.text = _weatherData[@"weather"];
                                                         self.lowTemp.text = _weatherData[@"low_temp"];
+                                                        self.lowTemp.text = [NSString stringWithFormat:@"%@℃ ", _weatherData[@"low_temp"]];
                                                         self.windDirection.text = _weatherData[@"wind_direction"];
                                                     });
                                                     

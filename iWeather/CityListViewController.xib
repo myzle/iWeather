@@ -43,6 +43,7 @@
                     <exclude reference="2Ib-ZJ-yAQ"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="305" y="273"/>
         </view>
     </objects>
 </document>
