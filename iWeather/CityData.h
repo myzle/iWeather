@@ -13,6 +13,6 @@
 @property (nonatomic, copy) NSString *cityID;
 @property (nonatomic, copy) NSString *cityName;
 
-- (instancetype)initWithCityName: (NSString *)name andCityID: (NSString *)id;
+- (instancetype)initWithCityName: (NSString *)cityName andCityID: (NSString *)cityID;
 
 @end

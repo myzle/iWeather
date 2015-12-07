@@ -10,13 +10,13 @@
 
 @implementation CityData
 
-- (instancetype)initWithCityName:(NSString *)name andCityID:(NSString *)id
+- (instancetype)initWithCityName:(NSString *)cityName andCityID:(NSString *)cityID
 {
     self = [super init];
     
     if(self) {
-        self.cityID = id;
-        self.cityName = name;
+        self.cityID = cityID;
+        self.cityName = cityName;
     }
     
     return self;
