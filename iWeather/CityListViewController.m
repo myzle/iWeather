@@ -10,12 +10,15 @@
 #import "WeatherDataCell.h"
 #import "CityData.h"
 #import "WeatherDetailViewController.h"
+#import "AddCityViewController.h"
 
 static NSString * const WeatherDataCellIdentifier = @"WeatherDataCell";
 
 @interface CityListViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *addCityButton;
+
 //@property (nonatomic, copy) NSMutableArray *cityList;
 
 @end
@@ -23,6 +26,7 @@ static NSString * const WeatherDataCellIdentifier = @"WeatherDataCell";
 @implementation CityListViewController
 {
     NSMutableArray *_cityList;
+    NSString *_newCityName;
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,6 +49,7 @@ static NSString * const WeatherDataCellIdentifier = @"WeatherDataCell";
     CityData *data = [[CityData alloc] initWithCityName:@"北京" andCityID:@"101010100"];
     
     [_cityList addObject:data];
+    _newCityName = nil;
     
 }
 
@@ -83,6 +88,37 @@ static NSString * const WeatherDataCellIdentifier = @"WeatherDataCell";
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [_cityList removeObjectAtIndex:indexPath.row];
+    
+    NSArray *indexPaths = @[indexPath];
+    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (IBAction)addNewCity:(id)sender {
+    AddCityViewController *controller = [[AddCityViewController alloc] init];
+    
+    [controller returnText:^(NSString *showText) {
+        _newCityName = showText;
+        CityData *newCity = [[CityData alloc] initWithCityName:_newCityName andCityID:@""];
+        NSInteger newCityIndex = [_cityList count];
+        [_cityList addObject:newCity];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:newCityIndex inSection:0];
+        NSArray *indexPaths = @[indexPath];
+        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+    
+    
+}
+//NSInteger newRowIndex = [self.checklist.items count];
+//[self.checklist.items addObject:item];
+//
+//NSIndexPath *indexPath = [NSIndexPath indexPathForItem:newRowIndex inSection:0];
+//NSArray *indexPaths = @[indexPath];
+//[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 /*
 #pragma mark - Navigation
 
