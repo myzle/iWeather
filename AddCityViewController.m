@@ -8,7 +8,6 @@
 
 #import "AddCityViewController.h"
 
-
 @interface AddCityViewController ()
 
 @end

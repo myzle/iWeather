@@ -19,8 +19,6 @@ static NSString * const WeatherDataCellIdentifier = @"WeatherDataCell";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addCityButton;
 
-//@property (nonatomic, copy) NSMutableArray *cityList;
-
 @end
 
 @implementation CityListViewController
@@ -44,12 +42,15 @@ static NSString * const WeatherDataCellIdentifier = @"WeatherDataCell";
     UINib *cellNib = [UINib nibWithNibName:WeatherDataCellIdentifier bundle:nil];
     
     [self.tableView registerNib:cellNib forCellReuseIdentifier:WeatherDataCellIdentifier];
+    
+    //Initial array _cityList to store cityname, _newCityName to store the city name returned from the other view
     _cityList = [[NSMutableArray alloc] initWithCapacity:100];
-    
-    CityData *data = [[CityData alloc] initWithCityName:@"北京" andCityID:@"101010100"];
-    
-    [_cityList addObject:data];
     _newCityName = nil;
+    
+    //Add default city
+    CityData *data = [[CityData alloc] initWithCityName:@"北京" andCityID:@"101010100"];
+    [_cityList addObject:data];
+    
     
 }
 
@@ -80,20 +81,21 @@ static NSString * const WeatherDataCellIdentifier = @"WeatherDataCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     WeatherDetailViewController *controller = [[WeatherDetailViewController alloc] initWithNibName:@"WeatherDetailViewController" bundle:nil];
-    
     CityData *data = _cityList[indexPath.row];
-    
     controller.cityName = data.cityName;
     
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+//Enable swap to delete
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     [_cityList removeObjectAtIndex:indexPath.row];
     
     NSArray *indexPaths = @[indexPath];
     [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
+#pragma mark - Add new city function
 
 - (IBAction)addNewCity:(id)sender {
     AddCityViewController *controller = [[AddCityViewController alloc] init];
@@ -110,15 +112,8 @@ static NSString * const WeatherDataCellIdentifier = @"WeatherDataCell";
     }];
     
     [self presentViewController:controller animated:YES completion:nil];
-    
-    
 }
-//NSInteger newRowIndex = [self.checklist.items count];
-//[self.checklist.items addObject:item];
-//
-//NSIndexPath *indexPath = [NSIndexPath indexPathForItem:newRowIndex inSection:0];
-//NSArray *indexPaths = @[indexPath];
-//[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+
 /*
 #pragma mark - Navigation
 
